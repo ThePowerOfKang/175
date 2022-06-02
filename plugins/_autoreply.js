@@ -13,6 +13,12 @@ handler.all = async function (m) {
     let setting = db.data.settings[this.user.jid]
     let user = global.db.data.users[m.sender]
     
+     let hd = /(hdi?i|hadi?i)/i
+     let isOwn = hd.exec(m.text)
+     if (isOwn && !m.fromMe) {
+        m.reply(`Hadi Ownerku, Kenapa? Naksir sama Hadi?`)
+    }
+ 
     // salam
     let reg = /(ass?alam|اَلسَّلاَمُ عَلَيْكُمْ|السلام عليکم)/i
     let isSalam = reg.exec(m.text)
