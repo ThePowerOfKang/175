@@ -39,7 +39,7 @@ module.exports = {
         ['6285701399751', 'hdiiofficial', 'Owner Bot', 'hdiiofficial.bot@gmail.com', true],
         ]
         global.kontakseller = [
-        ['62', 'Admin 1', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
+        ['13364174578', 'Admin 1', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
         ['62', 'Admin 2', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
         ['62', 'Admin 3', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
         ['62', 'Admin 4', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
@@ -715,17 +715,17 @@ Untuk mematikan fitur ini, ketik
 
 global.dfail = async (type, m, conn) => {
     let msg = {
-        rowner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        owner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        mods: `Perintah ini hanya dapat digunakan oleh *Moderator*`,
+        rowner: `Perintah ini hanya dapat digunakan oleh _*Hadi*_`,
+        owner: `Perintah ini hanya dapat digunakan oleh _*Team Bot*_`,
+        mods: `Perintah ini hanya dapat digunakan oleh *Seller*`,
         premium: 'Perintah ini hanya untuk member _*Premium*_ !',
         group: `Perintah ini hanya dapat digunakan di grup!`,
         private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
         admin: 'Perintah ini hanya untuk *Admin* grup!',
         botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
         unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
-        nsfw: `NSFW tidak aktif, Silahkan hubungi Team Bot Discussion untuk mengaktifkan fitur ini!`,
-        rpg: `RPG tidak aktif, Silahkan hubungi Team Bot Discussion Untuk mengaktifkan fitur ini!`,
+        nsfw: `NSFW tidak aktif, Silahkan hubungi Team Bot untuk mengaktifkan fitur ini!`,
+        rpg: `RPG tidak aktif, Silahkan hubungi Team Bot Untuk mengaktifkan fitur ini!`,
         restrict: 'Fitur ini di *disable*!'
     }[type]
     if (msg) return conn.reply(m.chat, msg, m, { mentions: conn.parseMention(msg) })
@@ -744,18 +744,18 @@ fs.watchFile(file, () => {
 
 function ucapan() {
     const time = moment.tz('Asia/Jakarta').format('HH')
-    let res = "Selamat malam 🌙"
+    let res = "Dah malem loh ko blom bobo?"
     if (time >= 4) {
-        res = "Selamat pagi 🌄"
+        res = "Selamat pagi. 🌄"
     }
     if (time > 10) {
-        res = "Selamat siang ☀️"
+        res = "Selamat siang. ☀️"
     }
     if (time >= 15) {
-        res = "Selamat sore 🌅"
+        res = "Selamat sore. 🌅"
     }
     if (time >= 18) {
-        res = "Selamat malam 🌙"
+        res = "Selamat malam. 🌙"
     }
     return res
 }
