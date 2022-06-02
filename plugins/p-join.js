@@ -58,6 +58,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
                     m.reply(`@${m.sender.split`@`[0]} telah menambahkan ${conn.user.name} ke ${await conn.getName(res)} jid: ${res}, bot akan keluar dalam waktu: ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), data.jid, { mentions: [m.sender] })
                 }
             await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `${conn.user.name} adalah bot whatsapp yang dibangun dengan Nodejs, ${conn.user.name} diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik ${usedPrefix}menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli, { mentions: [m.sender] })
+            await conn.reply('120363041365929060@g.us', `NEW BOT JOINED\n\nADMIN : @${m.sender.split`@`[0]} \nGROUP : ${await conn.getName(res)} \nID GROUP : ${res} \nEXPIRED : ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), global.troli)
         })
     }
 }
