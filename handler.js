@@ -711,6 +711,29 @@ Untuk mematikan fitur ini, ketik
         await this.delay(1000)
         this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
     }
+},
+      async onCall(json) {
+    if (!setting.anticall) return
+    let jid = json[2][0][1]['from']
+    let isOffer = json[2][0][2][0][0] == 'offer'
+    let users = global.db.data.users
+    let user = users[jid] || {}
+    if (user.whitelist) return
+    if (jid && isOffer) {
+      const tag = this.generateMessageTag()
+      const nodePayload = ['action', 'call', ['call', {
+        'from': this.user.jid,
+        'to': `${jid.split`@`[0]}@s.whatsapp.net`,
+        'id': tag
+      }, [['reject', {
+        'call-id': json[2][0][2][0][1]['call-id'],
+        'call-creator': `${jid.split`@`[0]}@s.whatsapp.net`,
+        'count': '0'
+      }, null]]]]
+      this.sendJSON(nodePayload, tag)
+      m.reply('Tolong Jangan Menelpon Bot\nJika Melanggar Anda bisa Di banned!')
+    }
+  }
 }
 
 global.dfail = async (type, m, conn) => {
