@@ -6,14 +6,17 @@ let handler = async (m, { conn }) => {
     // Kalo ngeyel gk bakal gw up sc lgi.
     
     let txt = `
-Bot ini menggunakan script github
+Bot Ini Menggunakan Script Private.
 
+Jika Anda Ingin Membuat Bot Seperti Ini Anda Bisa Menggunakan Script Asli Bot Ini.
+Original 
 https://github.com/FokusDotId/Family-MD.git
+pliss follow dan kasih ✨⭐⭐🌟 !!!
+Github Creator : https://github.com/FokusDotId
 
-pliss follow dan kasih ✨⭐⭐🌟 ya pak!
+My github : https://github.com/hdiiofficial
 
-My Github: https://github.com/FokusDotId
-
+Dont forget to follow me on github
 `
      conn.reply(m.chat, txt, m)
 }
