@@ -17,7 +17,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
             if (now < global.db.data.chats[res].expired) global.db.data.chats[res].expired += jumlahHari
             else global.db.data.chats[res].expired = now + jumlahHari
                 conn.reply(m.chat, `Berhasil join grup ${await conn.getName(res)}\nBot akan keluar secara otomatis setelah: ${msToDate(global.db.data.chats[res].expired - now)}.\nToken joincount mu: ${user.joincount}/1`, m)
-                await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `${conn.user.name} adalah bot whatsapp yang dibangun dengan Nodejs, ${conn.user.name} diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik ${usedPrefix}menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli, { mentions: [m.sender] })
+                await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `${conn.user.name} adalah bot whatsapp yang dibangun dengan Nodejs, ${conn.user.name} diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik .menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'RULES', `.rules`, 'MENU BOT', `.menu`, ftroli, { mentions: [m.sender] })
                 for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) {
                     let data = (await conn.onWhatsApp(jid))[0] || {}
                     if (data.exists)
@@ -40,7 +40,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
                 if (data.exists)
                 m.reply(`@${m.sender.split`@`[0]} telah menambahkan ${conn.user.name} ke ${await conn.getName(res)} jid: ${res}, bot akan keluar dalam waktu: ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), data.jid, { mentions: [m.sender] })
             }
-            await conn.send2ButtonImg(res, await (await fetch(img)).buffer(), teks, wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli)
+            await conn.send2ButtonImg(res, await (await fetch(img)).buffer(), teks, wm, 'RULES', `.rules`, 'Owner', `.owner`, ftroli)
         })
     } else if ((isPrems || !isOwner || !isROwner)) {
         if (user.joincount === 0) throw `Kamu sudah melebihi token/limit memasukkan bot ke dalam group!`
@@ -57,7 +57,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
                     if (data.exists)
                     m.reply(`@${m.sender.split`@`[0]} telah menambahkan ${conn.user.name} ke ${await conn.getName(res)} jid: ${res}, bot akan keluar dalam waktu: ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), data.jid, { mentions: [m.sender] })
                 }
-            await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `${conn.user.name} adalah bot whatsapp yang dibangun dengan Nodejs, ${conn.user.name} diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik ${usedPrefix}menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli, { mentions: [m.sender] })
+            await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `${conn.user.name} adalah bot whatsapp yang dibangun dengan Nodejs, ${conn.user.name} diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik ${usedPrefix}menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'RULES', `.rules`, 'Seller', `.sewabot`, ftroli, { mentions: [m.sender] })
             await conn.reply('120363041365929060@g.us', `NEW BOT JOINED\n\nADMIN : @${m.sender.split`@`[0]} \nGROUP : ${await conn.getName(res)} \nID GROUP : ${res} \nEXPIRED : ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), global.troli)
         })
     }
