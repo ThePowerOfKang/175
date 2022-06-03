@@ -31,7 +31,7 @@ handler.all = async function (m) {
         this.sendButton(m.chat, `┌「 *Undang Bot ke Grup* 」
 ├ 7 Hari / Rp 5,000
 ├ 30 Hari / Rp 15,000
-└────
+└──── Prem + gc 30hari Rp 20.000
 `.trim(), wm, 'Pemilik Bot', '.owner', m)
     }
 
