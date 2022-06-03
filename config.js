@@ -2,7 +2,8 @@ let fs = require('fs')
 global.owner = JSON.parse(fs.readFileSync('./src/owner.json')) // Put your number to folder /src/owner.json
 global.mods = JSON.parse(fs.readFileSync('./src/moderator.json')) // Want some help?
 
-global.APIs = { // API Prefix
+global.APIs = {
+  // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
   bg: 'http://bochil.ddns.net',
@@ -15,9 +16,10 @@ global.APIs = { // API Prefix
   amel: 'https://melcanz.com',
   hardianto: 'https://hardianto.xyz',
   lol: 'https://api.lolhuman.xyz',
-  adicug: 'https://api.adiofficial.xyz'
+  adicug: 'https://api.adiofficial.xyz',
 }
-global.APIKeys = { // APIKey Here
+global.APIKeys = {
+  // APIKey Here
   // 'https://website': 'apikey'
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://api.xteam.xyz': 'apikeylu',
@@ -28,7 +30,7 @@ global.APIKeys = { // APIKey Here
   'https://pencarikode.xyz': 'apikeylu',
   'https://hardianto.xyz': 'hardianto',
   'https://leyscoders-api.herokuapp.com': 'apikeylu',
-  'https://api.adiofficial.xyz': 'apikey lu'
+  'https://api.adiofficial.xyz': 'apikey lu',
 }
 
 //global.wm = '_WhatsApp Bot by @hdiiofficial_'
@@ -37,7 +39,7 @@ global.eror = '_*мααƒ ѕєяνєя тι∂αк ѕтαвιℓ..*_'
 
 //========Url Template Buttons=========//
 global.dtu = 'YUNGTUP'
-global.urlnya = "https://youtube.com/channel/UCQGj68QT7OTmrpZL2NFVXoQ"
+global.urlnya = 'https://youtube.com/channel/UCQGj68QT7OTmrpZL2NFVXoQ'
 
 //============= callButtons =============//
 global.dtc = 'SAVE CONTACT'
@@ -84,16 +86,18 @@ global.rpg = {
       iron: '⛓️',
       string: '🕸️',
       kuda: '🐎',
-      kucing: '🐈' ,
+      kucing: '🐈',
       anjing: '🐕',
       makananpet: '🍖',
       gold: '👑',
-      emerald: '💚'
+      emerald: '💚',
     }
-    let results = Object.keys(emot).map(v => [v, new RegExp(v, 'gi')]).filter(v => v[1].test(string))
+    let results = Object.keys(emot)
+      .map((v) => [v, new RegExp(v, 'gi')])
+      .filter((v) => v[1].test(string))
     if (!results.length) return ''
     else return emot[results[0][0]]
-  }
+  },
 }
 
 let chalk = require('chalk')

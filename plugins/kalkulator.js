@@ -22,7 +22,7 @@ let handler = async (m, { conn, text }) => {
     .replace(/\*×/g, '×')
   try {
     console.log(val)
-    let result = (new Function('return ' + val))()
+    let result = new Function('return ' + val)()
     if (!result) throw result
     conn.reply(m.chat, `*${format}* = _${result}_`, m)
   } catch (e) {

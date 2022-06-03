@@ -15,7 +15,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     console.error(e)
     if (Buffer.isBuffer(e)) stiker = e
   } finally {
-    if (stiker) conn.sendFile(m.chat, stiker, 'wm.webp', '', m, false, { asSticker: true })
+    if (stiker)
+      conn.sendFile(m.chat, stiker, 'wm.webp', '', m, false, {
+        asSticker: true,
+      })
     else throw 'Gagal ngasih wm cokk!\nusahakan kirim terus balas stikernya ya cokk!'
   }
 }

@@ -1,7 +1,8 @@
-module.exports = Object.assign(async function handler(m, { isOwner, isPremium, command }) {
+module.exports = Object.assign(
+  async function handler(m, { isOwner, isPremium, command }) {
     if (!(isOwner || isPremium)) {
-        global.dfail('premium', m, conn)
-        throw false
+      global.dfail('premium', m, conn)
+      throw false
     }
     if (!m.quoted) throw 'Reply Pesan!'
     if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
@@ -10,8 +11,10 @@ module.exports = Object.assign(async function handler(m, { isOwner, isPremium, c
     if (!(hash in sticker)) throw 'Hash not found in database'
     sticker[hash].locked = !/^un/i.test(command)
     m.reply('Done!')
-}, {
-    help: ['un', ''].map(v => v + 'lockcmd'),
+  },
+  {
+    help: ['un', ''].map((v) => v + 'lockcmd'),
     tags: ['database'],
-    command: /^(un)?lockcmd$/i
-})
+    command: /^(un)?lockcmd$/i,
+  }
+)

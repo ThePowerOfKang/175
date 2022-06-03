@@ -1,8 +1,8 @@
-let handler = m => m
+let handler = (m) => m
 handler.before = async function (m) {
   this.suit = this.suit ? this.suit : {}
   if (db.data.users[m.sender].suit < 0) db.data.users[m.sender].suit = 0
-  let room = Object.values(this.suit).find(room => room.id && room.status && [room.p, room.p2].includes(m.sender))
+  let room = Object.values(this.suit).find((room) => room.id && room.status && [room.p, room.p2].includes(m.sender))
   if (room) {
     let win = ''
     let tie = false
@@ -16,16 +16,20 @@ handler.before = async function (m) {
       room.asal = m.chat
       clearTimeout(room.waktu)
       //delete room[room.id].waktu
-      m.reply(`Suit telah dikirimkan ke chat
+      m.reply(
+        `Suit telah dikirimkan ke chat
 @${room.p.split`@`[0]} dan 
 @${room.p2.split`@`[0]}
 
 Silahkan pilih suit di chat masing"
-klik wa.me/${conn.user.jid.split`@`[0]}`, m.chat, {
-        contextInfo: {
-          mentionedJid: [room.p, room.p2]
+klik wa.me/${conn.user.jid.split`@`[0]}`,
+        m.chat,
+        {
+          contextInfo: {
+            mentionedJid: [room.p, room.p2],
+          },
         }
-      })
+      )
 
       if (!room.pilih) this.send3Button(room.p, 'Silahkan pilih', `Menang +${room.poin}XP\nKalah -${room.poin_lose}XP\nBonus +${room.poin_bot}`, 'Batu🗿', 'Batu', 'Kertas📄', 'Kertas', 'Gunting✂️', 'Gunting', m)
       if (!room.pilih2) this.send3Button(room.p2, 'Silahkan pilih', `Menang +${room.poin}XP\nKalah -${room.poin_lose}XP\nBonus +${room.poin_bot}`, 'Batu🗿', 'Batu', 'Kertas📄', 'Kertas', 'Gunting✂️', 'Gunting', m)
@@ -71,17 +75,21 @@ klik wa.me/${conn.user.jid.split`@`[0]}`, m.chat, {
       else if (k.test(stage) && b.test(stage2)) win = room.p
       else if (k.test(stage) && g.test(stage2)) win = room.p2
       else if (stage == stage2) tie = true
-      this.reply(room.asal, `
+      this.reply(
+        room.asal,
+        `
 _*Hasil Suit*_${tie ? '\nSERI' : ''}
 
 @${room.p.split`@`[0]} (${room.text}) ${tie ? '' : room.p == win ? ` Menang \n+${room.poin}XP\nBonus +${room.poin_bot}` : ` Kalah \n-${room.poin_lose}XP`}
 @${room.p2.split`@`[0]} (${room.text2}) ${tie ? '' : room.p2 == win ? ` Menang \n+${room.poin}XP\nBonus +${room.poin_bot}` : ` Kalah \n-${room.poin_lose}XP`}
-`.trim(), m, { contextInfo: { mentionedJid: [room.p, room.p2] } })
+`.trim(),
+        m,
+        { contextInfo: { mentionedJid: [room.p, room.p2] } }
+      )
       if (!tie) {
         db.data.users[win == room.p ? room.p : room.p2].exp += room.poin
         db.data.users[win == room.p ? room.p : room.p2].exp += room.poin_bot
         db.data.users[win == room.p ? room.p2 : room.p].exp += room.poin_lose
-
       }
       delete this.suit[room.id]
     }

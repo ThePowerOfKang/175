@@ -5,7 +5,7 @@ let handler = async (m, { conn, command, usedPrefix, text, isPrems, isOwner }) =
   if (!text) throw `uhm.. cari apa?\n\ncontoh:\n${usedPrefix + command} i see your monster`
   let chat = global.db.data.chats[m.chat]
   let results = await yts(text)
-  let vid = results.all.find(video => video.seconds < 3600)
+  let vid = results.all.find((video) => video.seconds < 3600)
   if (!vid) throw 'Video/Audio Tidak ditemukan'
   let isVideo = /2$/.test(command)
   let yt = false
@@ -24,14 +24,24 @@ let handler = async (m, { conn, command, usedPrefix, text, isPrems, isOwner }) =
   if (yt === false) throw 'semua server gagal'
   if (yt2 === false) throw 'semua server gagal'
   let { dl_link, thumb, title, filesize, filesizeF } = yt
-  await conn.send2ButtonLoc(m.chat, await (await fetch(thumb)).buffer(), `
+  await conn.send2ButtonLoc(
+    m.chat,
+    await (await fetch(thumb)).buffer(),
+    `
 *Judul:* ${title}
 *Ukuran File Audio:* ${filesizeF}
 *Ukuran File Video:* ${yt2.filesizeF}
 *Server y2mate:* ${usedServer}
- `.trim(), wm, `🎵 AUDIO ${filesizeF}`, usedPrefix + `yta ${vid.url}`, `📽 VIDEO ${yt2.filesizeF}`, usedPrefix + `yt ${vid.url}`, m)
+ `.trim(),
+    wm,
+    `🎵 AUDIO ${filesizeF}`,
+    usedPrefix + `yta ${vid.url}`,
+    `📽 VIDEO ${yt2.filesizeF}`,
+    usedPrefix + `yt ${vid.url}`,
+    m
+  )
 }
-handler.help = ['play'].map(v => v + ' <pencarian>')
+handler.help = ['play'].map((v) => v + ' <pencarian>')
 handler.tags = ['downloader']
 handler.command = /^(dj|musik|song|lagu|p(lay)?)$/i
 
@@ -40,4 +50,3 @@ handler.limit = false
 handler.register = false
 
 module.exports = handler
-

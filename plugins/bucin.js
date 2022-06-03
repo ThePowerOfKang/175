@@ -1,5 +1,5 @@
-let fetch = require('node-fetch') 
-let handler  = async (m) => {
+let fetch = require('node-fetch')
+let handler = async (m) => {
   let res = await fetch(global.API('https://raw.githubusercontent.com', '/ayangnyahadii/database/master/kata-kata/bucin.json'))
   if (!res.ok) throw await res.text()
   let json = await res.json()

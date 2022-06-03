@@ -1,5 +1,7 @@
-
-let handler = async (m, { conn, usedPrefix }) => conn.sendButton(m.chat, `
+let handler = async (m, { conn, usedPrefix }) =>
+  conn.sendButton(
+    m.chat,
+    `
 ╭─「 R U L E S 」
 │ DILARANG MENELPON BOT.
 │ DILARANG SARA.
@@ -16,7 +18,12 @@ let handler = async (m, { conn, usedPrefix }) => conn.sendButton(m.chat, `
 ╰────
 
 Note:Jika Melanggar Akan Di Banned, tidak ada refund uang sewa.
-`.trim(), wm, 'MENU BOT', '.menu', global.ftroli)
+`.trim(),
+    wm,
+    'MENU BOT',
+    '.menu',
+    global.ftroli
+  )
 handler.help = ['rules']
 handler.tags = ['info']
 handler.command = /^rules$/i

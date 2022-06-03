@@ -1,27 +1,45 @@
 let fetch = require('node-fetch')
 
 const artinama_api = [
-  ['xteam', '/primbon/artinama', 'q', 'APIKEY', json => {
-    if (!json.status) throw json
-    return `
+  [
+    'xteam',
+    '/primbon/artinama',
+    'q',
+    'APIKEY',
+    (json) => {
+      if (!json.status) throw json
+      return `
 *Nama:* ${json.result.nama}
 *Arti:* ${json.result.arti}
 
 *Makna:* ${json.result.maksud}
 `.trim()
-  }],
-  ['http://nzcha-apii.herokuapp.com', '/artinama', 'nama', null, json => {
-    if (!json.status) throw json
-    return `
+    },
+  ],
+  [
+    'http://nzcha-apii.herokuapp.com',
+    '/artinama',
+    'nama',
+    null,
+    (json) => {
+      if (!json.status) throw json
+      return `
 *Arti:* ${json.result}
 `.trim()
-  }],
-  ['https://scrap.terhambar.com', '/nama', 'n', null, json => {
-    if (!json.status) throw json
-    return `
+    },
+  ],
+  [
+    'https://scrap.terhambar.com',
+    '/nama',
+    'n',
+    null,
+    (json) => {
+      if (!json.status) throw json
+      return `
 *Arti:* ${json.result.arti}
 `.trim()
-  }]
+    },
+  ],
 ]
 
 let handler = async (m, { text, usedPrefix, command }) => {
@@ -40,7 +58,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
   }
   m.reply(result)
 }
-handler.help = ['artinama'].map(v => v + ' [nama]')
+handler.help = ['artinama'].map((v) => v + ' [nama]')
 handler.tags = ['kerang']
 handler.command = ['artinama']
 

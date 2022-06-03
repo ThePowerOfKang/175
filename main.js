@@ -1,9 +1,6 @@
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
 require('./config')
-const {
-  useSingleFileAuthState,
-  DisconnectReason
-} = require('@adiwajshing/baileys')
+const { useSingleFileAuthState, DisconnectReason } = require('@adiwajshing/baileys')
 const { generate } = require('qrcode-terminal')
 const WebSocket = require('ws')
 const path = require('path')
@@ -28,10 +25,25 @@ const mongoDB = require('./lib/mongoDB')
 
 simple.protoType()
 
-global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
+global.API = (name, path = '/', query = {}, apikeyqueryname) =>
+  (name in global.APIs ? global.APIs[name] : name) +
+  path +
+  (query || apikeyqueryname
+    ? '?' +
+      new URLSearchParams(
+        Object.entries({
+          ...query,
+          ...(apikeyqueryname
+            ? {
+                [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name],
+              }
+            : {}),
+        })
+      )
+    : '')
 // global.Fn = function functionCallBack(fn, ...args) { return fn.call(global.conn, ...args) }
 global.timestamp = {
-  start: new Date
+  start: new Date(),
 }
 
 const PORT = process.env.PORT || 3000
@@ -41,15 +53,21 @@ global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
-  /https?:\/\//.test(opts['db'] || '') ?
-    new cloudDBAdapter(opts['db']) : /mongodb/.test(opts['db']) ?
-      new mongoDB(opts['db']) :
-//    new firebaseDB(opts:['db']) : 
+  /https?:\/\//.test(opts['db'] || '')
+    ? new cloudDBAdapter(opts['db'])
+    : /mongodb/.test(opts['db'])
+    ? new mongoDB(opts['db'])
+    : //    new firebaseDB(opts:['db']) :
       new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
 )
 global.DATABASE = global.db // Backwards Compatibility
 global.loadDatabase = async function loadDatabase() {
-  if (global.db.READ) return new Promise((resolve) => setInterval(function () { (!global.db.READ ? (clearInterval(this), resolve(global.db.data == null ? global.loadDatabase() : global.db.data)) : null) }, 1 * 1000))
+  if (global.db.READ)
+    return new Promise((resolve) =>
+      setInterval(function () {
+        !global.db.READ ? (clearInterval(this), resolve(global.db.data == null ? global.loadDatabase() : global.db.data)) : null
+      }, 1 * 1000)
+    )
   if (global.db.data !== null) return
   global.db.READ = true
   await global.db.read()
@@ -61,7 +79,7 @@ global.loadDatabase = async function loadDatabase() {
     msgs: {},
     sticker: {},
     settings: {},
-    ...(global.db.data || {})
+    ...(global.db.data || {}),
   }
   global.db.chain = _.chain(global.db.data)
 }
@@ -77,31 +95,32 @@ const { state, saveState } = useSingleFileAuthState(global.authFile)
 const connectionOptions = {
   printQRInTerminal: true,
   auth: state,
-  logger: P({ level: 'silent'}),
+  logger: P({ level: 'silent' }),
   version: [2, 2204, 13],
-  browser: ['Family-MD', 'IOS', '4.1.0']
+  browser: ['Family-MD', 'IOS', '4.1.0'],
 }
 
 global.conn = simple.makeWASocket(connectionOptions)
 
 if (!opts['test']) {
-  if (global.db) setInterval(async () => {
-    if (global.db.data) await global.db.write()
-    if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp'], tmp.forEach(filename => cp.spawn('find', [filename, '-amin', '3', '-type', 'f', '-delete'])))
-  }, 30 * 1000)
+  if (global.db)
+    setInterval(async () => {
+      if (global.db.data) await global.db.write()
+      if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp']), tmp.forEach((filename) => cp.spawn('find', [filename, '-amin', '3', '-type', 'f', '-delete']))
+    }, 30 * 1000)
 }
-if (opts['big-qr'] || opts['server']) conn.ev.on('qr', qr => generate(qr, { small: false }))
+if (opts['big-qr'] || opts['server']) conn.ev.on('qr', (qr) => generate(qr, { small: false }))
 if (opts['server']) require('./server')(global.conn, PORT)
 
 async function connectionUpdate(update) {
   const { connection, lastDisconnect } = update
   if (connection == 'connecting') console.log(chalk.redBright('🕛 Mengaktifkan Bot, Harap tunggu sebentar...'))
   if (connection == 'open') {
-      console.log(chalk.green('Connected✅'))
-      await conn.hehe("6281320170984@s.whatsapp.net", global.ftoli)
+    console.log(chalk.green('Connected✅'))
+    await conn.hehe('6281320170984@s.whatsapp.net', global.ftoli)
   }
   if (connection == 'close') console.log(chalk.red('⏹️Koneksi berhenti dan mencoba menghubungkan kembali...'))
-  global.timestamp.connect = new Date
+  global.timestamp.connect = new Date()
   if (lastDisconnect && lastDisconnect.error && lastDisconnect.error.output && lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut && conn.ws.readyState !== WebSocket.CONNECTING) {
     console.log(global.reloadHandler(true))
   }
@@ -109,27 +128,30 @@ async function connectionUpdate(update) {
   //console.log(JSON.stringify(update, null, 4))
 }
 
-
 process.on('uncaughtException', console.error)
 // let strQuot = /(["'])(?:(?=(\\?))\2.)*?\1/
 
 const imports = (path) => {
   path = require.resolve(path)
-  let modules, retry = 0
+  let modules,
+    retry = 0
   do {
     if (path in require.cache) delete require.cache[path]
     modules = require(path)
     retry++
-  } while ((!modules || (Array.isArray(modules) || modules instanceof String) ? !(modules || []).length : typeof modules == 'object' && !Buffer.isBuffer(modules) ? !(Object.keys(modules || {})).length : true) && retry <= 10)
+  } while ((!modules || Array.isArray(modules) || modules instanceof String ? !(modules || []).length : typeof modules == 'object' && !Buffer.isBuffer(modules) ? !Object.keys(modules || {}).length : true) && retry <= 10)
   return modules
 }
 let isInit = true
 global.reloadHandler = function (restatConn) {
   let handler = imports('./handler')
   if (restatConn) {
-    try { global.conn.ws.close() } catch { }
+    try {
+      global.conn.ws.close()
+    } catch {}
     global.conn = {
-      ...global.conn, ...simple.makeWASocket(connectionOptions)
+      ...global.conn,
+      ...simple.makeWASocket(connectionOptions),
     }
   }
   if (!isInit) {
@@ -172,7 +194,7 @@ global.reloadHandler = function (restatConn) {
 }
 
 let pluginFolder = path.join(__dirname, 'plugins')
-let pluginFilter = filename => /\.js$/.test(filename)
+let pluginFilter = (filename) => /\.js$/.test(filename)
 global.plugins = {}
 for (let filename of fs.readdirSync(pluginFolder).filter(pluginFilter)) {
   try {
@@ -196,13 +218,14 @@ global.reload = (_ev, filename) => {
     } else conn.logger.info(`requiring new plugin '${filename}'`)
     let err = syntaxerror(fs.readFileSync(dir), filename)
     if (err) conn.logger.error(`syntax error while loading '${filename}'\n${err}`)
-    else try {
-      global.plugins[filename] = require(dir)
-    } catch (e) {
-      conn.logger.error(e)
-    } finally {
-      global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)))
-    }
+    else
+      try {
+        global.plugins[filename] = require(dir)
+      } catch (e) {
+        conn.logger.error(e)
+      } finally {
+        global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)))
+      }
   }
 }
 Object.freeze(global.reload)
@@ -211,37 +234,31 @@ global.reloadHandler()
 
 // Quick Test
 async function _quickTest() {
-  let test = await Promise.all([
-    cp.spawn('ffmpeg'),
-    cp.spawn('ffprobe'),
-    cp.spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '-frames:v', '1', '-f', 'webp', '-']),
-    cp.spawn('convert'),
-    cp.spawn('magick'),
-    cp.spawn('gm'),
-    cp.spawn('find', ['--version'])
-  ].map(p => {
-    return Promise.race([
-      new Promise(resolve => {
-        p.on('close', code => {
-          resolve(code !== 127)
-        })
-      }),
-      new Promise(resolve => {
-        p.on('error', _ => resolve(false))
-      })
-    ])
-  }))
+  let test = await Promise.all(
+    [cp.spawn('ffmpeg'), cp.spawn('ffprobe'), cp.spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '-frames:v', '1', '-f', 'webp', '-']), cp.spawn('convert'), cp.spawn('magick'), cp.spawn('gm'), cp.spawn('find', ['--version'])].map((p) => {
+      return Promise.race([
+        new Promise((resolve) => {
+          p.on('close', (code) => {
+            resolve(code !== 127)
+          })
+        }),
+        new Promise((resolve) => {
+          p.on('error', (_) => resolve(false))
+        }),
+      ])
+    })
+  )
   let [ffmpeg, ffprobe, ffmpegWebp, convert, magick, gm, find] = test
   console.log(test)
-  let s = global.support = {
+  let s = (global.support = {
     ffmpeg,
     ffprobe,
     ffmpegWebp,
     convert,
     magick,
     gm,
-    find
-  }
+    find,
+  })
   require('./lib/sticker').support = s
   Object.freeze(global.support)
 
@@ -253,4 +270,3 @@ async function _quickTest() {
 _quickTest()
   .then(() => conn.logger.info('Quick Test Done'))
   .catch(console.error)
-  

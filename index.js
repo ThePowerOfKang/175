@@ -31,14 +31,14 @@ function start(file) {
   CFonts.say([process.argv[0], ...args].join(' '), {
     font: 'console',
     align: 'center',
-    gradient: ['red', 'magenta']
+    gradient: ['red', 'magenta'],
   })
   cluster.setupMaster({
     exec: path.join(__dirname, file),
     args: args.slice(1),
   })
   let p = cluster.fork()
-  p.on('message', data => {
+  p.on('message', (data) => {
     console.log('[RECEIVED]', data)
     switch (data) {
       case 'reset':
@@ -51,7 +51,7 @@ function start(file) {
         break
     }
   })
-  p.on('exit', code => {
+  p.on('exit', (code) => {
     isRunning = false
     console.error('Exited with code:', code)
     if (code === 0) return
@@ -62,9 +62,10 @@ function start(file) {
   })
   let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
   if (!opts['test'])
-    if (!rl.listenerCount()) rl.on('line', line => {
-      p.emit('message', line.trim())
-    })
+    if (!rl.listenerCount())
+      rl.on('line', (line) => {
+        p.emit('message', line.trim())
+      })
   // console.log(p)
 }
 

@@ -7,11 +7,10 @@ let handler = async function (m, { args, usedPrefix }) {
   user.registered = false
   m.reply(`Unreg berhasil!`)
 }
-handler.help = ['', 'ister'].map(v => 'unreg' + v + ' <SN|SERIAL NUMBER>')
+handler.help = ['', 'ister'].map((v) => 'unreg' + v + ' <SN|SERIAL NUMBER>')
 handler.tags = ['xp']
 
 handler.command = /^unreg(ister)?$/i
 handler.register = true
 
 module.exports = handler
-

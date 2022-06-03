@@ -37,22 +37,31 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }
   } catch (e) {
     throw e
-  }
-  finally {
+  } finally {
     if (wsf) {
       await wsf.build()
       const sticBuffer = await wsf.get()
-      if (sticBuffer) await conn.sendMessage(m.chat, { sticker: sticBuffer }, {
-        quoted: m,
-        mimetype: 'image/webp',
-        ephemeralExpiration: 86400
-      })
+      if (sticBuffer)
+        await conn.sendMessage(
+          m.chat,
+          { sticker: sticBuffer },
+          {
+            quoted: m,
+            mimetype: 'image/webp',
+            ephemeralExpiration: 86400,
+          }
+        )
     }
-    if (stiker) await conn.sendMessage(m.chat, { sticker: stiker }, {
-      quoted: m,
-      mimetype: 'image/webp',
-      ephemeralExpiration: 86400
-    })
+    if (stiker)
+      await conn.sendMessage(
+        m.chat,
+        { sticker: stiker },
+        {
+          quoted: m,
+          mimetype: 'image/webp',
+          ephemeralExpiration: 86400,
+        }
+      )
     // else throw `Gagal${m.isGroup ? ', balas gambarnya!' : ''}`
   }
 }

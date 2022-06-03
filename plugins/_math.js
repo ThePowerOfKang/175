@@ -1,4 +1,4 @@
-let handler = m => m
+let handler = (m) => m
 handler.before = async function (m) {
   if (!/^-?[0-9]+(\.[0-9]+)?$/.test(m.text)) return !0
   let id = m.chat

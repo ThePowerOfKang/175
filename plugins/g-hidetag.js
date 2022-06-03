@@ -1,6 +1,6 @@
 let { generateWAMessageFromContent } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text, participants }) => {
-  let users = participants.map(u => u.id)
+  let users = participants.map((u) => u.id)
   let q = m.quoted ? m.quoted : m
   let c = m.quoted ? m.quoted : m.msg
   let msg = await conn.cMod(
@@ -8,25 +8,29 @@ let handler = async (m, { conn, text, participants }) => {
     await generateWAMessageFromContent(
       m.chat,
       {
-        [c.toJSON ? q.mtype : 'extendedTextMessage']: c.toJSON ? c.toJSON() : {
-          text: await c || ''
-        },
-        mentions: await users
-      }, {
+        [c.toJSON ? q.mtype : 'extendedTextMessage']: c.toJSON
+          ? c.toJSON()
+          : {
+              text: (await c) || '',
+            },
+        mentions: await users,
+      },
+      {
         quoted: null,
-        userJid: conn.user.id
+        userJid: conn.user.id,
       }
     ),
-    text || q.text, conn.user.jid,
+    text || q.text,
+    conn.user.jid,
     {
-      mentions: await users
+      mentions: await users,
     }
   )
   await conn.relayMessage(m.chat, msg.message, {
-    messageId: msg.key.id
+    messageId: msg.key.id,
   })
 }
-handler.help = ['hidetag', 'pengumuman'].map(v => v + ' [teks]')
+handler.help = ['hidetag', 'pengumuman'].map((v) => v + ' [teks]')
 handler.tags = ['group']
 handler.command = /^(pengumuman|announce|hiddentag|hidetag)$/i
 

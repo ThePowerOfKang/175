@@ -204,7 +204,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
         }
       }
       chat.antivirtex = isEnable
-      break  
+      break
     case 'antispam':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -251,8 +251,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     case 'read':
       isAll = true
       if (!isOwner) {
-      	global.dfail('owner', m, conn)
-      	throw false
+        global.dfail('owner', m, conn)
+        throw false
       }
       global.opts['autoread'] = isEnable
       break
@@ -261,8 +261,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     case 'ephemeral':
       isAll = true
       if (!isOwner) {
-      	global.dfail('owner', m, conn)
-      	throw false
+        global.dfail('owner', m, conn)
+        throw false
       }
       setting.epe = isEnable
       break
@@ -276,7 +276,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.simi = isEnable
       break
     default:
-      if (!/[01]/.test(command)) throw `
+      if (!/[01]/.test(command))
+        throw `
 ┌〔 Daftar Opsi 〕
 │ ${isOwner ? '\n├ tag\n├ anon\n├ antispam\n├ antivirtex\n├ backup\n├ clear\n├ autoread\n├ grouponly\n├ jadibot\n├ nsfw\n├ public\n├ clear\n├ mycontact\n├ ephe' : ''}
 ├ autoclosegroup
@@ -300,11 +301,13 @@ ${usedPrefix}off welcome
 `.trim()
       throw false
   }
-  m.reply(`
+  m.reply(
+    `
 *${type}* berhasil di *${isEnable ? 'nyala' : 'mati'}kan* ${isAll ? 'untuk bot ini' : isUser ? '' : 'untuk chat ini'}
-`.trim())
+`.trim()
+  )
 }
-handler.help = ['on', 'off'].map(v => v + ' <opsi>')
+handler.help = ['on', 'off'].map((v) => v + ' <opsi>')
 handler.tags = ['group', 'owner']
 handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i
 

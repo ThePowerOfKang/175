@@ -1,12 +1,16 @@
 let handler = async (m, { conn, args }) => {
-  let users = Object.entries(global.db.data.users).filter(user => user[1].premium).map(([key, value]) => {
-    return { ...value, jid: key }
-  })
+  let users = Object.entries(global.db.data.users)
+    .filter((user) => user[1].premium)
+    .map(([key, value]) => {
+      return { ...value, jid: key }
+    })
   let sortedP = users.map(toNumber('premiumTime')).sort(sort('premiumTime'))
   let len = args[0] && args[0].length > 0 ? Math.min(100, Math.max(parseInt(args[0]), 10)) : Math.min(10, sortedP.length)
-  let { key } = await m.reply(`┌「 *premium* 」
+  let { key } = await m.reply(
+    `┌「 *premium* 」
 ${sortedP.slice(0, len).map(({ jid, name, premiumTime, registered }, i) => `├ ${i + 1}. ( ${conn.msToDate(premiumTime - new Date() * 1)} ) ${registered ? name : conn.getName(jid)} @${jid.split('@')[0]}`).join`\n`}
-└────`.trim())
+└────`.trim()
+  )
   setTimeout(() => {
     if (db.data.chats[m.chat].deletemedia) conn.sendMessage(m.chat, { delete: key })
   }, db.data.chats[m.chat].deletemediaTime)
@@ -23,8 +27,12 @@ function sort(property, ascending = true) {
 }
 
 function toNumber(property, _default = 0) {
-  if (property) return (a, i, b) => {
-    return { ...b[i], [property]: a[property] === undefined ? _default : a[property] }
-  }
-  else return a => a === undefined ? _default : a
+  if (property)
+    return (a, i, b) => {
+      return {
+        ...b[i],
+        [property]: a[property] === undefined ? _default : a[property],
+      }
+    }
+  else return (a) => (a === undefined ? _default : a)
 }

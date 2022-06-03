@@ -12,21 +12,28 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   if (age < 5) throw 'Bayi bisa ngetik sesuai format bjir ._., tapi gatau juga bocil skrg epic² pasti anak ngen ngep:v'
   user.name = name.trim()
   user.age = age
-  user.regTime = + new Date
+  user.regTime = +new Date()
   user.registered = true
   let prefix = usedPrefix
   let sn = createHash('md5').update(m.sender).digest('hex')
-  conn.sendButton(m.chat, `
+  conn.sendButton(
+    m.chat,
+    `
 ┌─「 *daftar berhasil* 」
 ├ nama: ${name}
 ├ umur: ${age}
 └────  
 
 *SN* (Serial Number) di kirim di chat pribadi dan digunakan untuk daftar ulang, jika lupa *SN* silahkan ketik *${usedPrefix}sn* untuk mengecek *SN* kamu! 
-`.trim(), wm, `Profile`,`${prefix}pp`, m) 
-conn.sendMessage(m.sender, {text: `*SN:* ${sn}`}, m)
+`.trim(),
+    wm,
+    `Profile`,
+    `${prefix}pp`,
+    m
+  )
+  conn.sendMessage(m.sender, { text: `*SN:* ${sn}` }, m)
 }
-handler.help = ['daftar', 'register'].map(v => v + ' <name>.<age>')
+handler.help = ['daftar', 'register'].map((v) => v + ' <name>.<age>')
 handler.tags = ['xp']
 
 handler.command = /^(daftar|reg(is(ter))?)$/i

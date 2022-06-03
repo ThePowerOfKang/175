@@ -5,7 +5,6 @@ let { spawn } = require('child_process')
 
 const defaultLang = 'id'
 let handler = async (m, { conn, args }) => {
-
   let lang = args[0]
   let text = args.slice(1).join(' ')
   if ((args[0] || '').length !== 2) {
@@ -15,8 +14,9 @@ let handler = async (m, { conn, args }) => {
   if (!text && m.quoted && m.quoted.text) text = m.quoted.text
 
   let res
-  try { res = await tts(text, lang) }
-  catch (e) {
+  try {
+    res = await tts(text, lang)
+  } catch (e) {
     m.reply(e + '')
     res = await tts(text)
   } finally {
@@ -33,11 +33,13 @@ function tts(text, lang = 'id') {
   return new Promise((resolve, reject) => {
     try {
       let tts = gtts(lang)
-      let filePath = path.join(__dirname, '../tmp', (1 * new Date) + '.wav')
+      let filePath = path.join(__dirname, '../tmp', 1 * new Date() + '.wav')
       tts.save(filePath, text, () => {
         resolve(fs.readFileSync(filePath))
         fs.unlinkSync(filePath)
       })
-    } catch (e) { reject(e) }
+    } catch (e) {
+      reject(e)
+    }
   })
 }

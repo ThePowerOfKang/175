@@ -10,18 +10,19 @@
 <a href="https://github.com/Fokusdotid/Family-MD/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/Fokusdotid/Family-MD?label=PullRequest&color=success&style=flat-square"></a>
 <a href="https://github.com/Fokusdotid/Family-MD/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/Fokusdotid/Family-MD?label=PullRequest&color=red&style=flat-square"></a>
 
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Fokusdotid/Family-MD)
+
 ## Join Group Diskusi
-[![BOT DISCUSSION GROUP](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Fm6gRtvuCDN9abXVlfekAK) 
+
+[![BOT DISCUSSION GROUP](https://img.shields.io/badge/WhatsApp%20Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/Fm6gRtvuCDN9abXVlfekAK)
 **NO BOT**
 
 ## UNTUK PENGGUNA WINDOWS/VPS/RDP
 
-* Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
-* Unduh & Instal NodeJS [`Klik Disini`](https://nodejs.org/en/download)
-* Unduh & Instal FFmpeg [`Klik Disini`](https://ffmpeg.org/download.html) (**Jangan Lupa Tambahkan FFmpeg ke variabel lingkungan PATH**)
-* Unduh & Instal ImageMagick [`Klik Disini`](https://imagemagick.org/script/download.php)
+- Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
+- Unduh & Instal NodeJS [`Klik Disini`](https://nodejs.org/en/download)
+- Unduh & Instal FFmpeg [`Klik Disini`](https://ffmpeg.org/download.html) (**Jangan Lupa Tambahkan FFmpeg ke variabel lingkungan PATH**)
+- Unduh & Instal ImageMagick [`Klik Disini`](https://imagemagick.org/script/download.php)
 
 ```bash
 git clone https://github.com/Fokusdotid/Family-MD.git
@@ -30,11 +31,11 @@ npm i
 node .
 ```
 
----------
+---
 
 ## UNTUK PENGGUNA TERMUX
 
-* Download Termux [`Klik Disini`](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_universal.apk)
+- Download Termux [`Klik Disini`](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_universal.apk)
 
 ```
 $ pkg update && upgrade -y
@@ -47,17 +48,20 @@ $ cd Family-MD
 $ npm i
 $ node .
 ```
----------
+
+---
+
 ## UNTUK PENGGUNA HEROKU
 
 ### Instal Buildpack
-* heroku/nodejs
-* https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
-* https://github.com/mcollina/heroku-buildpack-imagemagick.git
 
----------
+- heroku/nodejs
+- https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+- https://github.com/mcollina/heroku-buildpack-imagemagick.git
 
-## Arguments `node . [--options] [<session name>]` 
+---
+
+## Arguments `node . [--options] [<session name>]`
 
 ### `--session <nama file>`
 
@@ -67,8 +71,8 @@ contoh nama file `family.json` maka penggunaannya `node . --session 'family'`
 
 ### `--prefix <prefix>`
 
-* `prefixes` dipisahkan oleh masing-masing karakter
-Setel awalan
+- `prefixes` dipisahkan oleh masing-masing karakter
+  Setel awalan
 
 ### `--server`
 
@@ -133,7 +137,9 @@ conn.logger.level = 'trace'
 ```js
 conn.logger.level = 'debug'
 ```
-#### Thanks To 
+
+#### Thanks To
+
 **Allah SWT**,
 
 **Orang Tua**,
@@ -142,12 +148,13 @@ conn.logger.level = 'debug'
 
 **Semua yang selalu mendukung**
 
-
 ##### Special Thanks to
+
 [![Nurutomo](https://github.com/Nurutomo.png?size=100)](https://github.com/Nurutomo)
 [![BochilGaming](https://github.com/BochilGaming.png?size=100)](https://github.com/BochilGaming)
 
 ##### Penulis Ulang
+
 [![Fokus ID](https://github.com/fokusdotid.png?size=100)](https://github.com/fokusdotid)
 
 ###### Collaborator
