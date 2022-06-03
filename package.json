@@ -58,6 +58,7 @@
         "form-data": "^4.0.0",
         "g-i-s": "^2.1.6",
         "google-it": "^1.6.2",
+        "hikki-me": "^1.0.5",
         "human-readable": "^0.2.1",
         "image-to-base64": "^2.2.0",
         "jsdom": "^18.1.1",
