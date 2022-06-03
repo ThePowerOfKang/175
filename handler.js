@@ -39,11 +39,9 @@ module.exports = {
         ['6285701399751', 'hdiiofficial', 'Owner Bot', 'hdiiofficial.bot@gmail.com', true],
         ]
         global.kontakseller = [
-        ['13364174578', 'Admin 1', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
-        ['62', 'Admin 2', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
-        ['62', 'Admin 3', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
-        ['62', 'Admin 4', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
-        ['62', 'Admin 5', 'Seller Bot', 'Admin.hdioofficial@gmail.com', true],
+        ['13364174578', 'Verdi', 'Admin 1', 'Admin.hdioofficial@gmail.com', true],
+        ['6281290565513', 'Wandy', 'Admin 2', 'Admin.hdioofficial@gmail.com', true],
+        ['6281546533340', 'Adit', 'Admin 3', 'Admin.hdioofficial@gmail.com', true],
         ]
         global.bg = await (await fetch(img)).buffer()
         global.time = require('moment-timezone').tz('Asia/Jakarta').format('HH:mm:ss')
