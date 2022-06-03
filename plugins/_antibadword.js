@@ -14,10 +14,9 @@ handler.before = function (m, { isOwner, isAdmin, isBotAdmin }) {
 Warning: ${user.warning} / 10
 Jika warning mencapai 10 kamu akan *dibanned+kick*
 
-ketik *#on antibadword* untuk menyalakan antibadword
-ketik *#astagfirullah* atau *#maaf* untuk mengurangi warning
+“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim).
 
-“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim).`, wm, 'MATIKAN ANTIBADWORD', '.off antibadword', 'ASTAGHFIRULLAH', '.maaf', m)
+Berhenti toxic brader stay halal`, wm, 'MATIKAN ANTIBADWORD', '.off antibadword', 'ASTAGHFIRULLAH', '.maaf', m)
         if (user.warning >= 10) {
             user.banned = true
             if (m.isGroup) {
