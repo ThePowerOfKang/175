@@ -45,5 +45,6 @@ let handler = async (m, { conn, args, command }) => {
 }
 handler.tags = ['topup']
 handler.command = /^\/(topup|psatir)/i
+handler.rowner = true
 handler.help = ['topup'].map((x) => x + '')
 module.exports = handler
