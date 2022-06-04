@@ -5,11 +5,11 @@ let fetch = require('node-fetch')
 let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
-┌─〔 %me 〕
-├ *${global.ucapan} %name*
+┌─〔 %name 〕
+├ *${global.ucapan}*
 │
-├ Tersisa *%limit Limit*
-├ Role *%role*
+├ Limit *%limit Limit*
+├ Rank *%role*
 ├ Level *%level (%exp / %maxexp)* [%xp4levelup]
 ├ %totalexp XP secara Total
 │
@@ -19,22 +19,18 @@ const defaultMenu = {
 │
 ├ Uptime: *%uptime (%muptime)*
 ├ Database: %rtotalreg dari %totalreg
-├ Github:
-├ %github
 └────
 %readmore`.trim(),
   header: '┌─〔 %category 〕',
   body: '├ %cmd %islimit %isPremium',
   footer: '└────\n',
   after: `
-*%npmname@^%version*
-${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'topup', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all')
     tags = {
@@ -60,7 +56,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       audio: 'Pengubah Suara',
       jadibot: 'Jadi Bot',
       info: 'Info',
-      '': 'Tanpa Kategori',
+      topup: 'Top Up Game',
     }
   if (teks == 'game')
     tags = {
@@ -140,9 +136,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     tags = {
       info: 'Info',
     }
-  if (teks == 'tanpakategori')
+  if (teks == 'topup')
     tags = {
-      '': 'Tanpa Kategori',
+      topup: 'Top Up Game',
     }
   if (teks == 'owner')
     tags = {
@@ -233,7 +229,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
             { title: 'Pengubah Suara', rowId: `${_p}? audio` },
             { title: 'Jadi Bot', rowId: `${_p}? jadibot` },
             { title: 'Info', rowId: `${_p}? info` },
-            { title: 'Tanpa Kategori', rowId: `${_p}? tanpakategori` },
+            { title: 'Top Up Game', rowId: `${_p}? topup` },
             { title: 'Owner', rowId: `${_p}? owner` },
           ],
         },
@@ -278,8 +274,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   .map((help) => {
                     return body
                       .replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                      .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
-                      .replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
+                      .replace(/%islimit/g, menu.limit ? 'L' : '')
+                      .replace(/%isPremium/g, menu.premium ? 'P' : '')
                       .trim()
                   })
                   .join('\n')
@@ -336,7 +332,7 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-
+handler.register = true
 handler.admin = false
 handler.botAdmin = false
 
