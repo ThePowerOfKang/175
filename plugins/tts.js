@@ -25,6 +25,8 @@ let handler = async (m, { conn, args }) => {
 }
 handler.help = ['tts <lang> <teks>']
 handler.tags = ['tools']
+handler.register = true
+handler.limit = true
 handler.command = /^g?tts$/i
 module.exports = handler
 
