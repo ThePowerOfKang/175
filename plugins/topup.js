@@ -44,7 +44,7 @@ let handler = async (m, { conn, args, command }) => {
   })
 }
 handler.tags = ['topup']
-handler.command = /^\/(topup|psatir)/i
+handler.command = /^\/(tepep|psatir)/i
 handler.rowner = true
-handler.help = ['topup'].map((x) => x + '')
+handler.help = ['tepep'].map((x) => x + '')
 module.exports = handler
