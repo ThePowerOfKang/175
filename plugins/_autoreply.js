@@ -13,10 +13,6 @@ handler.all = async function (m) {
   let setting = db.data.settings[this.user.jid]
   let user = global.db.data.users[m.sender]
 
-  if (/^hdi?i|hadi?i$/i.test(m.text)) {
-    m.reply(`Hadi Ownerku, Kenapa? Naksir sama Hadi?`)
-  }
-
   // salam
   let reg = /(ass?alam|اَلسَّلاَمُ عَلَيْكُمْ|السلام عليکم)/i
   let isSalam = reg.exec(m.text)
@@ -49,6 +45,14 @@ handler.all = async function (m) {
 
   if (/^bot$/i.test(m.text)) {
     await this.sendButton(m.chat, !(m.isGroup || m.isPrems) && group ? 'hanya grup' : isBanned ? 'chat banned' : banned ? 'user banned' : 'aktif', wm, !(m.isGroup || m.isPrems) && group ? 'donasi' : isBanned ? 'unban' : banned ? 'minta owner kalo mau di unban' : 'donasi', !(m.isGroup || m.isPrems) && group ? '.donasi' : isBanned ? '.unban' : banned ? '.owner' : '.donasi', m)
+  }
+  
+  if (/^hadi$/i.test(m.text)) {
+    await conn.reply(m.chat, `hadi owner ku,kenapa?`, global.ftroli)
+  }
+
+  if (/^hdii$/i.test(m.text)) {
+    await conn.reply(m.chat, `kenapa manggil hdii?suka?`, global.ftroli)
   }
 
   // backup db
