@@ -13,9 +13,7 @@ handler.all = async function (m) {
   let setting = db.data.settings[this.user.jid]
   let user = global.db.data.users[m.sender]
 
-  let hd = /(hdi?i|hadi?i)/i
-  let isOwn = hd.exec(m.text)
-  if (isOwn && !m.fromMe) {
+  if (/^hdi?i|hadi?i$/i.test(m.text)) {
     m.reply(`Hadi Ownerku, Kenapa? Naksir sama Hadi?`)
   }
 
@@ -36,8 +34,8 @@ handler.all = async function (m) {
 └────
 `.trim(),
       wm,
-      'Pemilik Bot',
-      '.owner',
+      'Admin Bot',
+      '.sewa',
       m
     )
   }
