@@ -6,7 +6,7 @@ let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
 ┌─〔 %name 〕
-├ *${global.ucapan}*
+├ ${global.ucapan}
 │
 ├ Limit *%limit Limit*
 ├ Rank *%role*
@@ -30,7 +30,7 @@ const defaultMenu = {
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'topup', 'owner']
+  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'religi', 'audio', 'primbon', 'info', 'topup', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all')
     tags = {
@@ -52,9 +52,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       database: 'Database',
       vote: 'Voting',
       absen: 'Absen',
-      quran: "Al Qur'an",
+      religi: "RELIGI",
       audio: 'Pengubah Suara',
-      jadibot: 'Jadi Bot',
+      primbon: 'Primbon',
       info: 'Info',
       topup: 'Top Up Game',
     }
@@ -120,17 +120,17 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       vote: 'Voting',
       absen: 'Absen',
     }
-  if (teks == 'quran')
+  if (teks == 'religi')
     tags = {
-      quran: "Al Qur'an",
+      religi: "RELIGI",
     }
   if (teks == 'audio')
     tags = {
       audio: 'Pengubah Suara',
     }
-  if (teks == 'jadibot')
+  if (teks == 'primbon')
     tags = {
-      jadibot: 'Jadi Bot',
+      primbon: 'Primbon',
     }
   if (teks == 'info')
     tags = {
@@ -225,9 +225,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
             { title: 'Fun', rowId: `${_p}? fun` },
             { title: 'Database', rowId: `${_p}? database` },
             { title: 'Vote & Absen', rowId: `${_p}? vote` },
-            { title: "Al-Qur'an", rowId: `${_p}? quran` },
+            { title: "RELIGI", rowId: `${_p}? religi` },
             { title: 'Pengubah Suara', rowId: `${_p}? audio` },
-            { title: 'Jadi Bot', rowId: `${_p}? jadibot` },
+            { title: 'Primbon', rowId: `${_p}? primbon` },
             { title: 'Info', rowId: `${_p}? info` },
             { title: 'Top Up Game', rowId: `${_p}? topup` },
             { title: 'Owner', rowId: `${_p}? owner` },
