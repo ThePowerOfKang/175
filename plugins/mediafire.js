@@ -14,7 +14,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 }
 handler.help = ['mediafire'].map(v => v + ' <url>')
 handler.tags = ['premium']
-handler.command = /^(mediafire|mf)$/i
+handler.command = /^(mediafire)$/i
 
 handler.premium = true
 
