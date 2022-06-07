@@ -16,6 +16,6 @@ let handler = async (m) => {
 `.trim()
   ) // Tambah sendiri kalo mau
 }
-handler.command = /^(intro)$/i
+handler.command = /^(ingtro)$/i
 
 module.exports = handler
