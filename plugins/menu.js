@@ -205,24 +205,20 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           title: 'List Menu ' + namabot,
           rows: [
             { title: 'Semua Perintah', rowId: `${_p}? all` },
-            { title: 'Game', rowId: `${_p}? game` },
+            { title: 'GROUP', rowId: `${_p}? grup` },
+            { title: 'GAME', rowId: `${_p}? game` },
             { title: 'XP', rowId: `${_p}? xp` },
+            { title: 'Fun', rowId: `${_p}? fun` },
             { title: 'Stiker', rowId: `${_p}? stiker` },
             { title: 'Kerang Ajaib', rowId: `${_p}? kerangajaib` },
-            { title: 'Quotes', rowId: `${_p}? quotes` },
-            { title: 'Grup', rowId: `${_p}? grup` },
-            { title: 'Premium', rowId: `${_p}? premium` },
             { title: 'Internet', rowId: `${_p}? internet` },
-            { title: 'Anonymous', rowId: `${_p}? anonymous` },
-            { title: 'Nulis & Logo', rowId: `${_p}? nulis` },
-            { title: 'Downloader', rowId: `${_p}? downloader` },
             { title: 'Tools', rowId: `${_p}? tools` },
-            { title: 'Fun', rowId: `${_p}? fun` },
-            { title: 'Database', rowId: `${_p}? database` },
-            { title: 'Vote & Absen', rowId: `${_p}? vote` },
             { title: "RELIGI", rowId: `${_p}? religi` },
-            { title: 'Pengubah Suara', rowId: `${_p}? audio` },
             { title: 'Primbon', rowId: `${_p}? primbon` },
+            { title: 'Premium', rowId: `${_p}? premium` },
+            { title: 'Pengubah Suara', rowId: `${_p}? audio` },
+            { title: 'Anonymous', rowId: `${_p}? anonymous` },
+            { title: 'Downloader', rowId: `${_p}? downloader` },
             { title: 'Info', rowId: `${_p}? info` },
             { title: 'Top Up Game', rowId: `${_p}? topup` },
             { title: 'Owner', rowId: `${_p}? owner` },
@@ -269,8 +265,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   .map((help) => {
                     return body
                       .replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                      .replace(/%islimit/g, menu.limit ? 'L' : '')
-                      .replace(/%isPremium/g, menu.premium ? 'P' : '')
+                      .replace(/%islimit/g, menu.limit ? 'Ⓛ' : '')
+                      .replace(/%isPremium/g, menu.premium ? 'Ⓟ' : '')
                       .trim()
                   })
                   .join('\n')
@@ -313,7 +309,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       readmore: readMore,
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send3TemplateButtonImg(m.chat, fla + teks, text.trim(), wm, `🏅Owner`, `${_p}owner`, `🎖ThanksTo`, `${_p}tqto`, `🎗  Donasi  🎗`, `${_p}infobot`)
+    await conn.send3TemplateButtonImg(m.chat, fla + teks, text.trim(), 'Ⓟ premium | Ⓛ limit', `🏅Owner`, `${_p}owner`, `🎖ThanksTo`, `${_p}tqto`, `🎗  Donasi  🎗`, `${_p}infobot`)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
