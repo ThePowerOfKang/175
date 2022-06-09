@@ -5,16 +5,18 @@ let fetch = require('node-fetch')
 let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
-┌─〔 %name 〕
+┌─〔 HALLO %name 〕
 ├ ${global.ucapan}
-│
-├ Limit *%limit Limit*
+└────
+┌─〔 USER INFO 〕
+├ Nama : %name 
+├ Limit*%limit Limit*
 ├ Rank *%role*
 ├ Level *%level (%exp / %maxexp)* [%xp4levelup]
 ├ %totalexp XP secara Total
 │
-├ Tanggal: *%week %weton, %date*
-├ Tanggal Islam: *%dateIslamic*
+├ Masehi: *%week %weton, %date*
+├ Islam: *%dateIslamic*
 ├ Waktu: *%time*
 │
 ├ Uptime: *%uptime (%muptime)*
