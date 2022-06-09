@@ -30,31 +30,26 @@ const defaultMenu = {
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'religi', 'audio', 'primbon', 'info', 'topup', 'owner']
+  let arrayMenu = ['all', 'grup', 'game', 'xp', 'fun', 'sticker', 'kerang', 'internet', 'tools', 'religi', 'primbon', 'audio', 'downloader', 'anonymous', 'premium', 'info', 'topup', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all')
     tags = {
-      main: 'UTAMA',
-      game: 'Game',
+      main: 'DASHBOARD',
+      group: 'GROUP',
+      game: 'GAME',
       rpg: 'RPG',
       xp: 'Exp & Limit',
+      fun: 'FUN',
       sticker: 'Stiker',
       kerang: 'Kerang Ajaib',
-      quotes: 'Quotes',
-      group: 'Grup',
-      premium: 'Premium',
       internet: 'Internet',
-      anonymous: 'Anonymous Chat',
-      nulis: 'MagerNulis & Logo',
-      downloader: 'Downloader',
-      tools: 'Tools',
-      fun: 'Fun',
-      database: 'Database',
-      vote: 'Voting',
-      absen: 'Absen',
-      religi: "RELIGI",
+      tools: 'TOOLS',
+      religi: 'RELIGI',
+      primbon: 'PRIMBON',
       audio: 'Pengubah Suara',
-      primbon: 'Primbon',
+      downloader: 'DOWNLOADER',
+      anonymous: 'Anonymous Chat',
+      premium: 'PREMIUM',
       info: 'Info',
       topup: 'Top Up Game',
     }
