@@ -27,7 +27,7 @@ let handler = async (m, { conn, text }) => {
   conn.reply(m.chat, '*───「 Youtube Search 」───*\n\n' + teks, m)
 }
 handler.help = ['ytsearch <query>']
-handler.tags = ['tools', 'internet']
+handler.tags = ['internet']
 handler.command = /^yts(earch)?$/i
 
 module.exports = handler
