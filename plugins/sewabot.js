@@ -49,7 +49,7 @@ let handler = async (m, { conn }) => {
 }
 
 handler.help = ['sewabot']
-handler.tags = ['info']
+handler.tags = ['info', 'main']
 handler.command = /^(sewa|sewabot)$/i
 
 module.exports = handler
