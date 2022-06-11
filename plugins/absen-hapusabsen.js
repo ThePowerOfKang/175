@@ -12,7 +12,7 @@ let handler = async (m, { conn, isAdmin, isOwner }) => {
   m.reply(`berhasil menghapus sesi absen!`)
 }
 handler.help = ['-absen']
-handler.tags = ['absen']
+handler.tags = ['group']
 handler.command = /^(delete|hapus|-)(attendance|absen)$/i
 
 module.exports = handler
