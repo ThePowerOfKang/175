@@ -59,7 +59,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
   m.reply(result)
 }
 handler.help = ['artinama'].map((v) => v + ' [nama]')
-handler.tags = ['kerang']
+handler.tags = ['primbon']
 handler.command = ['artinama']
 
 module.exports = handler
