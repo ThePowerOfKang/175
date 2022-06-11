@@ -40,7 +40,7 @@ module.exports = {
         ]
         global.kontakseller = [
         ['13364174578', 'Verdi', 'Admin 1', 'Admin.hdioofficial@gmail.com', true],
-        ['6281290565513', 'Wandy', 'Admin 2', 'Admin.hdioofficial@gmail.com', true],
+        ['6287760718160', 'Toni', 'Admin 2', 'Admin.hdioofficial@gmail.com', true],
         ['6281546533340', 'Adit', 'Admin 3', 'Admin.hdioofficial@gmail.com', true],
         ]
         global.bg = await (await fetch(img)).buffer()
