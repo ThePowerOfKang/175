@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, isAdmin, isOwner }) => {
   conn.absen[id] = [await conn.sendButton(m.chat, `sesi absen dimulai!`, wm, 'hadir', `.absen`, m), [], text]
 }
 handler.help = ['+absen [teks]']
-handler.tags = ['absen']
+handler.tags = ['group']
 handler.command = /^(start|mulai|\+)(attendance|absen)$/i
 
 module.exports = handler
