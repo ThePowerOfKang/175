@@ -6,7 +6,7 @@ let handler = async (m) => {
   m.reply(pickRandom(json))
 }
 handler.help = ['bucin']
-handler.tags = ['quotes']
+handler.tags = ['internet']
 handler.command = /^(bucin)$/i
 handler.register = true
 
