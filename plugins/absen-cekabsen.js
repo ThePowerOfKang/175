@@ -25,7 +25,7 @@ ${list}
   await conn.send2ButtonLoc(m.chat, fla + 'absen', caption, wm, 'hadir', `.absen`, 'hapus sesi', `.hapusabsen`)
 }
 handler.help = ['cekabsen']
-handler.tags = ['absen']
+handler.tags = ['group']
 handler.command = /^(cekabsen)$/i
 
 module.exports = handler
