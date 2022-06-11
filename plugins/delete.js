@@ -12,7 +12,7 @@ let handler = function (m) {
   })
 }
 handler.help = ['delete']
-handler.tags = ['info']
+handler.tags = ['tools']
 handler.command = /^(d|del|delete|unsend?)$/i
 handler.limit = false
 
