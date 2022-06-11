@@ -28,7 +28,7 @@ ${list}
   await conn.send2Button(m.chat, caption, wm, 'hadir', `.absen`, 'cek', `.cekabsen`, m, { mentions: [m.sender] })
 }
 handler.help = ['absen']
-handler.tags = ['absen']
+handler.tags = ['group']
 handler.command = /^(absen|hadir|presence)$/i
 
 module.exports = handler
