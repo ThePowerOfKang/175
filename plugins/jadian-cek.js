@@ -52,7 +52,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
   }
 }
 handler.help = ['cekpacar']
-handler.tags = ['jadian']
+handler.tags = ['fun']
 handler.command = /^(cekpacar)$/i
 handler.fail = null
 module.exports = handler
