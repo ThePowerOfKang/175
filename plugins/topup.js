@@ -1,5 +1,5 @@
 let hikki = require("hikki-me")
-let handler = async (m, { conn, text }) => {
+let handler = async (m, { conn, args, text }) => {
 try {
 id = text.split('|')[0]
 jumlah = text.split('|')[1]
@@ -16,4 +16,5 @@ handler.help = ['topupff id|jumlah']
 handler.tags = ['topup']
 handler.command = /^topupff$/i
 handler.rowner = true
+
 module.exports = handler
