@@ -15,6 +15,6 @@ conn.sendFile(m.chat, top.qrCode, 'Qris.jpg', `Payment : ${top.paymentMethod}\nI
 handler.help = ['topupff id|jumlah']
 handler.tags = ['topup']
 handler.command = /^topupff$/i
-handler.rowner = true
+handler.register = true
 
 module.exports = handler
