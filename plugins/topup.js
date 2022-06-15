@@ -1,50 +1,19 @@
-const hikki = require('hikki-me')
-// jika error fix sendiri disini cuma ngasih bayangan ini gw buat se simple mungkin
-let handler = async (m, { conn, args, command }) => {
-  if (/psatir/i.test(command)) {
-    try {
-      const did = args[0]
-      const amount = args[1]
-      if (!did || !amount) return m.reply('format uknown')
-      const beliau = await hikki.game.topupFreeFire(did, amount)
-      const epep = await hikki.game.payDiamond(beliau, '08953225697662')
-      conn.sendMessage(m.chat, {
-        image: epep.qrCode,
-        caption: `\`\`\`${beliau}\`\`\``,
-      })
-    } catch (e) {
-      m.reply('Beliau Kocak Geming')
-    }
-  } else if (!args[0]) throw 'Masukan ID terlebih dahulu!'
-  const id = args[0]
-  const diamond = await hikki.game.nickNameFreefire(id)
-  if (!diamond) throw 'Tidak dapat menemukan id yang sama'
-  const sections = [
-    {
-      title: 'List Diamond Free Fire',
-      rows: [
-        { title: '5 Dm', rowId: `#psatir ${id} 5` },
-        { title: '12 Dm', rowId: `#psatir ${id} 12` },
-        { title: '70 Dm', rowId: `#psatir ${id} 70` },
-        { title: '140 Dm', rowId: `#psatir ${id} 140` },
-        { title: '355 Dm', rowId: `#psatir ${id} 355` },
-        { title: '720 Dm', rowId: `#psatir ${id} 720` },
-      ],
-    },
-  ]
-  const listMessage = {
-    text: 'Top Up Free Fire',
-    footer: 'USer Info:\n' + 'NickName: ' + diamond.userName + '\n' + 'Id: ' + id + '\n' + 'Lanjutkan dengan menekan tombol dibawah ini',
-    buttonText: 'Ayuk Top Up',
-    sections,
-  }
-  conn.sendMessage(m.chat, listMessage, {
-    quoted: m,
-    contextInfo: { forwardingScore: 99999, isForwarded: true },
-  })
+let hikki = require("hikki-me")
+let handler = async (m, { conn, text }) => {
+try {
+id = text.split('|')[0]
+jumlah = text.split('|')[1]
+ff = await hikki.game.nickNameFreefire(id) 
+const topup = async function topupFreeFire() {
+const makeSession = await hikki.game.topupFreeFire(id, jumlah) 
+return await hikki.game.payDiamond(makeSession, '0895410636348')
 }
+const top = await topup() 
+conn.sendFile(m.chat, top.qrCode, 'Qris.jpg', 'Payment : ${top.paymentMethod}\nId : ${id}\nJumlah : ${jumlah} Diamond\nScan & Bayar Maksimal 30 detik setelah qr ini keluar', m)
+} catch (e) { return reply(`Sistem Error atau Nominal Diamond/Id\nUser Tidak Ada\nList Nominal Diamond\n5 Dm\n12 Dm\n70 Dm\n140 Dm\n355 Dm\n720 Dm`) }
+}
+handler.help = ['topupff id|jumlah']
 handler.tags = ['topup']
-handler.command = /^\/(tepep|psatir)/i
+handler.command = /^topupff$/i
 handler.rowner = true
-handler.help = ['tepep'].map((x) => x + '')
 module.exports = handler
