@@ -31,7 +31,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     `${prefix}pp`,
     m
   )
-  conn.sendMessage(m.sender, { text: `*SN:* ${sn}` }, m)
+  conn.sendMessage(m.sender, { text: `*SN:* ${sn}\n\nKode sn digunakan untuk unregister!!\nHarap Simpan Kode ini Dengan Baik` }, global.ftroli)
 }
 handler.help = ['daftar', 'register'].map((v) => v + ' <name>.<age>')
 handler.tags = ['xp']
