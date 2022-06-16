@@ -693,25 +693,29 @@ module.exports = {
             await this.sendButton(id, text, wm, 'Matikan Fitur', `.off detect`, global.ftroli, { contextInfo: { mentionedJid: this.parseMention(text) }, mentions: await this.parseMention(text) })
         }
     },
-    async delete({ remoteJid, fromMe, id, participant }) {
-        if (fromMe) return
-        let chats = Object.entries(conn.chats).find(([user, data]) => data.messages && data.messages[id])
-        if (!chats) return
-        let msg = JSON.parse(chats[1].messages[id])
-        let chat = global.db.data.chats[msg.key.remoteJid] || {}
-        if (chat.delete) return
-        this.sendButton(msg.key.remoteJid, `
+    async delete(message) {
+        try {
+            const { fromMe, id, participant } = message
+            if (fromMe) return
+            let chats = Object.entries(conn.chats).find(([_, data]) => data.messages?.[id])
+            if (!chats) return
+            let msg = chats instanceof String ? JSON.parse(chats[1].messages[id]) : chats[1].messages[id]
+            let chat = global.db.data.chats[msg.key.remoteJid] || {}
+            if (chat.delete) return
+            await this.reply(msg.key.remoteJid, `
 Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
 Untuk mematikan fitur ini, ketik
 *.enable delete*
-`.trim(), wm, 'Matikan Fitur ini', '.enable delete', msg, {
-            mentions: [participant]
-        })
-        await this.delay(1000)
-        this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
+`.trim(), msg, {
+                mentions: [participant]
+            })
+            this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
+        } catch (e) {
+            console.error(e)
+        }
     }
 }
-      
+
 global.dfail = async (type, m, conn) => {
     let msg = {
         rowner: `Perintah ini hanya dapat digunakan oleh _*Hadi*_`,
