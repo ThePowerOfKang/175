@@ -6,7 +6,7 @@ let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
 ┌─〔 HALLO %name 〕
-├ ${global.ucapan}
+├ %ucapan
 └────
 ┌─〔 USER INFO 〕
 ├ Nama : %name 
