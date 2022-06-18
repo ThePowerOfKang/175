@@ -17,7 +17,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 Timeout *${(timeout / 1000).toFixed(2)} detik*
 Ketik ${usedPrefix}hint untuk hint
 Bonus: ${poin} XP
-Tiketcoin: 1 Tiketcoin
     `.trim()
   conn.tebakgambar[id] = [
     await conn.sendFile(m.chat, json.img, 'tebakgambar.jpg', caption, m, false, { thumbnail: Buffer.alloc(0) }),
@@ -34,4 +33,4 @@ handler.command = /^tebakgambar/i
 handler.limit = false
 handler.group = false
 
-modele.export = handler
+modele.exports = handler
