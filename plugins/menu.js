@@ -6,7 +6,7 @@ let moment = require('moment-timezone')
 const defaultMenu = {
   before: `
 ┌─〔 HALLO %name 〕
-├ %ucapan
+├ %sapaan
 └────
 ┌─〔 USER INFO 〕
 ├ Nama : %name 
@@ -150,6 +150,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let umur = `*${age == '-1' ? 'Belum Daftar*' : age + '* Thn'}`
     let name = registered ? global.db.data.users[m.sender].name : conn.getName(m.sender)
+    let sapaan = global.ucapan
     let d = new Date(new Date() + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
