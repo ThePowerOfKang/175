@@ -205,6 +205,12 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       let judul = `${global.ucapan}, ${name}`.trim()
       const sections = [
         {
+          title: 'WANGSAF SHOP',
+          rows: [
+            { title: 'BUKA TOKO BOT', rowId: '.wangsafshop' },
+          ],
+        },
+        {
           title: 'List Menu ' + namabot,
           rows: [
             { title: 'Semua Perintah', rowId: `${_p}? all` },
@@ -300,6 +306,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       name,
       umur,
       money,
+      sapaan,
       age,
       weton,
       week,
