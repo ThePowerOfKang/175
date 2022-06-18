@@ -39,6 +39,21 @@ handler.all = async function (m) {
         },
       },
     }
+    global.fvideo = {
+      key: {
+       participant: `0@s.whatsapp.net`, 
+       ...(m.chat ? { remoteJid: "0-1625305606@g.us" } : {}), 
+       },
+       message: { 
+         videoMessage: { 
+           title: "hallo bang",
+           h: `Hmm`,
+           seconds: '99999', 
+           caption: 'Halo bang',
+           jpegThumbnail: fs.readFileSync('./src/logo.jpg')
+         },
+       },
+     }
     // Tambahin ya
   }
 }
