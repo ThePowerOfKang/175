@@ -39,20 +39,18 @@ handler.all = async function (m) {
         },
       },
     }
-    global.fvideo = {
-      key: {
-       participant: `0@s.whatsapp.net`, 
-       ...(m.chat ? { remoteJid: "0-1625305606@g.us" } : {}), 
-       },
-       message: { 
-         videoMessage: { 
-           title: "hallo bang",
-           h: `Hmm`,
-           seconds: '99999', 
-           caption: 'Halo bang',
-           jpegThumbnail: fs.readFileSync('./src/logo.jpg')
-         },
-       },
+    global.adReply = {
+      contextInfo: {
+	forwardingScore: 9999,
+	isForwarded: true, // ini biar ada tulisannya diteruskan berkali-kali, jika ingin di hilangkan ganti true menjadi false
+	externalAdReply: { // Bagian ini sesuka kalian berkreasi :'v
+		title: "hdiiofficial",
+		body: wm,
+		previewType: "PHOTO",
+		thumbnail: await (await fetch(img)).buffer(),
+		//sourceUrl: 'https://wa.me',
+	     }
+        }
      }
     // Tambahin ya
   }
