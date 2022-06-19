@@ -10,7 +10,8 @@ let handler = async(m, { conn, text, args }) => {
 
     let korban = `${text}`
     var nomor = m.sender
-    let spam1 = await res.json()
+    let spam = await res.json()
+    let spam1 = `${spam}`
     let umpan = `Punten oyyy\n\n\nAda orang?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMwehehe`
     
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
@@ -33,7 +34,7 @@ let handler = async(m, { conn, text, args }) => {
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
-    conn.sendMessage(korban + '@s.whatsapp.net', {text:umpan}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:umpan}, global.adReply)
    
     m.reply(`Sukses`)
 }
