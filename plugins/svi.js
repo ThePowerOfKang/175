@@ -11,7 +11,7 @@ let handler = async(m, { conn, text, args }) => {
 
     let korban = `${text}`
     var nomor = m.sender
-    let spam1 = `${bahan}`
+    let spam1 = bahan
     let umpan = `Punten oyyy\n\n\nAda orang?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMwehehe`
     
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
