@@ -1,6 +1,6 @@
 const { MessageType } = require('@adiwajshing/baileys')
 
-let handler = async(m, { conn, text }) => {
+let handler = async(m, { conn, text, args }) => {
     text = args.join(' ')
     if (!text) return conn.reply(m.chat, 'Silahkan masukan nomor yang akan di spam\n\n*Contoh:*\n.spam 6285xxxxxxxx', m)
     if (text.startsWith('+')) return conn.reply(m.chat, '[!] Tolong masukan Nomor dengan awalaan 62\n\n*Contoh:*\n.spam 6285xxxxxxxx|elyas ganteng', m)
