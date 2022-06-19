@@ -8,8 +8,8 @@ let handler = async(m, { conn, text, args }) => {
 
     let korban = `${text}`
     var nomor = m.sender
-    let spam1 = `*「 WA SPAMMER 」*\n\nPELAKU SPAM : wa.me/${nomor.split("@s.whatsapp.net")[0]}\nPesan : ${text}\n\n\nBukan salah gw ya bang\nGw cuman BOT`
-
+    let spam1 = `${bahan}`
+    let umpan = `Punten oyyy\n\n\nAda orang?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMwehehe`
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
@@ -20,8 +20,19 @@ let handler = async(m, { conn, text, args }) => {
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
+    conn.sendMessage(korban + '@s.whatsapp.net', {text:umpan}, {quoted:m})
    
-    m.reply(`Berhasil mengirim spam ke nomor ${korban} 10 kali`)
+    m.reply(`Sukses`)
 }
 handler.help = ['svi nomor', 'spamvirtex nomor']
 handler.tags = ['owner']
