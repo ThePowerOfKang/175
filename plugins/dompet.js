@@ -9,12 +9,13 @@ let handler = async (m, { conn, usedPrefix }) => {
     pp = await conn.profilePictureUrl(who, 'image')
   } catch (e) {
   } finally {
-    let { name, premium, premiumTime, atm, limit, warning, money, exp, lastclaim, registered, regTime, age, level, role } = global.db.data.users[who]
+    let { name, premium, premiumTime, atm, limit, warning, money, exp, lastclaim, registered, regTime, age, level, role, duit } = global.db.data.users[who]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let username = conn.getName(who)
     let str = `
 ╭───ꕥ *PROFILE* ꕥ───✾
 │•> Name: ${username}
+│•> Saldo : Rp ${duit}
 │•> Premium: ${premium ? `${conn.msToDate(premiumTime - new Date() * 1)}` : 'Gratisan'}
 │•> Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
 │•> Umur: *${age == '-1' ? 'Belum Daftar' : age}*
