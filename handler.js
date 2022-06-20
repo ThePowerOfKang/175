@@ -164,6 +164,8 @@ module.exports = {
                     if (!('montir' in user)) user.montir = false
                     if (!('kuli' in user)) user.kuli = false
                     if (!('polisi' in user)) user.polisi = false
+                    // REAL MONEY
+                    if (!isNumber(user.duit)) user.duit = 0
                 } else global.db.data.users[m.sender] = {
                     joincount: 1,
                     healt: 100,
@@ -241,6 +243,7 @@ module.exports = {
                     role: '',
                     autolevelup: false,
                     pc: 0,
+                    duit: 0,
                     // Mancing cuk
                     as: 0,
                     paus: 0,
