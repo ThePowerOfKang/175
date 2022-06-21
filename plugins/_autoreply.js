@@ -54,6 +54,14 @@ handler.all = async function (m) {
   if (/^hdii$/i.test(m.text)) {
     await conn.reply(m.chat, `kenapa manggil hdii?suka?`, global.ftroli)
   }
+  
+  if (/^P$/i.test(m.text)) {
+    await conn.reply(m.chat, `Pa Pe Pa Pe salam yg bener`, global.ftroli)
+  }
+
+  if (/^p$/i.test(m.text)) {
+    await conn.reply(m.chat, `pa pe pa pe salam yang bener`, global.ftroli)
+  }
 
   // backup db
   if (setting.backup) {
