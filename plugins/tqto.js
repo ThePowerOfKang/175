@@ -7,6 +7,7 @@
 let handler = async (m, { conn, usedPrefix }) => {
   let tqto = `*BIG THANKS TO*
 
+My Parent
 Nurutomo: 
 https://github.com/Nurutomo
 Istikmal: 
@@ -27,7 +28,8 @@ Irwan:
 https://github.com/irwanx
 Rasel:
 https://github.com/raselcomel
-
+hdiiofficial
+https://trakteer.id/hdiiofficial/tip
 \`\`\`${conn.user.name}\`\`\`
 `
   const _0x5ec2bc = _0x513f
@@ -62,7 +64,7 @@ https://github.com/raselcomel
         forwardingScore: 0x1869f,
         isForwarded: !![],
         externalAdReply: {
-          mediaUrl: 'https://wa.me/6281320170984',
+          mediaUrl: 'https://wa.me/6285701399751',
           mediaType: 0x2,
           previewType: _0x5ec2bc(0x91),
           title: _0x5ec2bc(0x8c) + global['u'],
@@ -72,7 +74,7 @@ https://github.com/raselcomel
         },
       },
       caption: tqto,
-      footer: 'ʙy\x20ᴀɢᴜᴢ\x20ꜰᴀᴍɪʟɪᴀ',
+      footer: 'Powered\x20by\x20hdiiofficial',
       buttons: buttons,
       headerType: 0x1,
     }
@@ -94,7 +96,7 @@ https://github.com/raselcomel
     )
   }
   function _0x3ab1() {
-    const _0x2ddc13 = ['PHOTO', '41556mAOWSl', '315029mfxoHR', '12mXoIIK', 'ʙy\x20ᴀɢᴜᴢ\x20ꜰᴀᴍɪʟɪᴀ', '22rYgXim', '7SSUbEY', '126965OFojcR', 'Source\x20Code\x20Bot\x20✨', 'ucapan', 'https://telegra.ph/file/38ff21d724ecd78d7d0f8.jpg', '459wZVMhI', '3088760AXxbRp', '63472BQeoOC', '198780iZpkyW', '1674618puSpKb', 'https://wa.me/6281320170984', 'aktif\x20selama\x20:\x20', 'sendMessage', '27XpEzWF', 'https://www.instagram.com/aguzfamilia', 'doc']
+    const _0x2ddc13 = ['PHOTO', '41556mAOWSl', '315029mfxoHR', '12mXoIIK', 'Powered\x20by\x20hdiiofficial', '22rYgXim', '7SSUbEY', '126965OFojcR', 'Source\x20Code\x20Bot\x20✨', 'ucapan', 'https://telegra.ph/file/38ff21d724ecd78d7d0f8.jpg', '459wZVMhI', '3088760AXxbRp', '63472BQeoOC', '198780iZpkyW', '1674618puSpKb', 'https://wa.me/6285701399751', 'aktif\x20selama\x20:\x20', 'sendMessage', '27XpEzWF', 'https://www.instagram.com/hdiiofficial', 'doc']
     _0x3ab1 = function () {
       return _0x2ddc13
     }
