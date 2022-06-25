@@ -1,5 +1,7 @@
 let fs = require('fs')
 let fetch = require('node-fetch')
+const moment = require('moment-timezone')
+
 let handler = (m) => m
 handler.all = async function (m) {
   let pp = 'https://telegra.ph/file/2d06f0936842064f6b3bb.png'
