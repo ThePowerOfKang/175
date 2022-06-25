@@ -1,5 +1,8 @@
 let { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys')
 let limit = 50
+const ytdl = require("ytdl-core")
+const yts = require("yt-search")
+const axios = require("axios")
 const { servers, yta } = require('../lib/y2mate')
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
   if (!args || !args[0]) return conn.reply(m.chat, 'Uhm... urlnya mana?', m)
@@ -91,4 +94,21 @@ function ytPlay(query) {
       })
       .catch(reject);
   });
+}
+
+function bytesToSize(bytes) {
+  return new Promise((resolve, reject) => {
+    const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+    if (bytes === 0) return "n/a";
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+    if (i === 0) resolve(`${bytes} ${sizes[i]}`);
+    resolve(`${(bytes / 1024 ** i).toFixed(1)} ${sizes[i]}`);
+  });
+}
+
+function formated(ms) {
+  let h = isNaN(ms) ? "--" : Math.floor(ms / 3600000);
+  let m = isNaN(ms) ? "--" : Math.floor(ms / 60000) % 60;
+  let s = isNaN(ms) ? "--" : Math.floor(ms / 1000) % 60;
+  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(":");
 }
