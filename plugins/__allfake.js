@@ -1,6 +1,10 @@
 let fs = require('fs')
 let fetch = require('node-fetch')
 const moment = require('moment-timezone')
+let flaaa = JSON.parse(fs.readFileSync('./api/fla.json'))
+let waifu = JSON.parse(fs.readFileSync('./api/waifu.json'))
+let data = JSON.parse(fs.readFileSync('./data.json'))
+
 
 let handler = (m) => m
 handler.all = async function (m) {
@@ -19,8 +23,8 @@ handler.all = async function (m) {
     global.settings = global.db.data.settings
     global.pickRandom = pickRandom
     global.doc = pickRandom(["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/msword", "application/pdf"])
-    global.img = pickRandom(global.waifu)
-    global.fla = pickRandom(global.flaaa)
+    global.img = pickRandom(waifu)
+    global.fla = pickRandom(flaaa)
     global.namabot = conn.user.name
     global.packname = global.namabot
     global.author = global.data.owner
